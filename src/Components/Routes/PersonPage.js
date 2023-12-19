@@ -14,7 +14,7 @@ let PersonPage = () => {
     useEffect(() => {
       const fetchPersonData = async () => {
         try {
-          const response = await axios.get(`${API_PERSON}/${id}/`);
+          const response = await axios.get(`${API_PERSON}/${name}/`);
           const res = response.data;
   
           if (res) {
@@ -28,7 +28,7 @@ let PersonPage = () => {
               { title: 'GENDER', data: res.gender },
             ]);
             setPersonName(res.name);
-            setPersonPhoto(getCharacterImg(id));
+            setPersonPhoto(getCharacterImg(name));
           }
         } catch (error) {
           console.error("FAILED TO ACCESS", error);
@@ -36,7 +36,7 @@ let PersonPage = () => {
       };
   
       fetchPersonData();
-    }, [id]);
+    }, [name]);
 
      return (
     
