@@ -25,7 +25,10 @@
 }
 
 .App-link {
-  color: #000000;
+  color: #080101;
+}
+.bg-header-image {
+  background-image: url('../public/images/png/death-star.jpg');
 }
 
 @keyframes App-logo-spin {

@@ -9,13 +9,14 @@ let PersonPage = () => {
   const [personInfo, setPersonInfo] = useState();
   const [personName, setPersonName] = useState();
   const [personPhoto, setPersonPhoto] = useState();
-  const { name } = useParams()
+  const { id,name } = useParams()
   
     useEffect(() => {
       const fetchPersonData = async () => {
         try {
           const response = await axios.get(`${API_PERSON}/${name}/`);
           const res = response.data;
+          console.log(res);
   
           if (res) {
             setPersonInfo([
@@ -36,27 +37,24 @@ let PersonPage = () => {
       };
   
       fetchPersonData();
-    }, [name]);
-
-     return (
-    
-      <div className="flex ml-[600px]">
+    }, [id, name]);
+    return (
+     <div className="flex ml-[600px]">
         <div className="mt-[100px]">
-          <img className="w-[200px] rounded-md" src={personPhoto} alt={personName} />
-          <div className="text-[#b91c1c] font-Oswald text-[20px]">{ personName }</div>
+            <img className="w-[250px] rounded-md" src={personPhoto} alt={personName} />
+            <div className="text-[#b91c1c] font-Oswald text-[30px]">{ personName }</div>
         </div>
         <div className="mt-[95px] ml-[30px]">
-          {personInfo && (
-            <ul className="font-Oswald text-white text-[28px]">
-              {personInfo.map(({ title, data }) => (
-                  data && (
-                    <li key={title}>
-                        <span>{title}</span>: {data}
-                    </li>
-                  )
-              ))}
-            </ul>
-          )}
+            {personInfo && (
+              <ul className="font-Oswald text-white text-[34px]">
+                {personInfo.map(({ title, data }) => (
+                    data && (
+                      <li key={title}>
+                          <span>{title}</span>: {data}
+                      </li>)
+                ))}
+              </ul>
+            )}
         </div>
       </div>
       
